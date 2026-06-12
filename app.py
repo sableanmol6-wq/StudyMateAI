@@ -274,8 +274,6 @@ if uploaded_file is not None:
         Solve this question step by step.
         Give explanation, formula and final answer.
         """
-
-with st.spinner("Solving question..."):
-    response = model.generate_content([prompt, image])
-
+        with st.spinner("Solving question..."):
+            response = model.generate_content([prompt, image])
         st.write(response.text)
