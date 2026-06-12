@@ -1,4 +1,3 @@
-import pytesseract
 from PIL import Image
 import os
 from dotenv import load_dotenv
@@ -16,7 +15,7 @@ mistakes = []
 
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-2.0-flash")
+model = genai.GenerativeModel("gemini-3.1-flash-lite")
 
 st.title("StudyMate AI")
 st.write("A low-cost AI study assistant for students who cannot afford coaching.")
@@ -258,30 +257,26 @@ else:
 
 
 
-if st.button("Solve Question"):
+uploaded_file = st.file_uploader(
+    "Upload Question Image",
+    type=["png", "jpg", "jpeg"]
+)
 
-    with st.spinner("Reading question from image..."):
-        extracted_text = pytesseract.image_to_string(image)
+if uploaded_file is not None:
 
-    st.subheader("Extracted Text")
-    st.write(extracted_text)
+    image = Image.open(uploaded_file)
 
-    prompt = "Solve this question step by step. Give formula, steps, and final answer:\n" + extracted_text
+    st.image(image)
 
-    with st.spinner("Solving question..."):
-        try:
-            response = model.generate_content(
-                prompt,
-                generation_config={
-                    "max_output_tokens": 500
-                },
-                request_options={"timeout": 30}
-            )
+    if st.button("Solve Question"):
 
-            st.subheader("Solution")
-            st.write(response.text)
+        prompt = """
+        Solve this question step by step.
+        Give explanation, formula and final answer.
+        """
 
-        except Exception as e:
-            st.error(f"Error: {e}")
+        response = model.generate_content(
+            [prompt, image]
+        )
 
-  
+        st.write(response.text)
