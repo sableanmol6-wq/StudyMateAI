@@ -15,7 +15,7 @@ mistakes = []
 
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-3.1-flash-lite")
+model = genai.GenerativeModel("gemini-2.0-flash")
 
 st.title("StudyMate AI")
 st.write("A low-cost AI study assistant for students who cannot afford coaching.")
@@ -275,8 +275,7 @@ if uploaded_file is not None:
         Give explanation, formula and final answer.
         """
 
-        response = model.generate_content(
-            [prompt, image]
-        )
+        with st.spinner("Solving question..."):
+    response = model.generate_content([prompt, image])
 
         st.write(response.text)
