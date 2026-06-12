@@ -1,3 +1,4 @@
+import pytesseract
 from PIL import Image
 import os
 from dotenv import load_dotenv
@@ -257,32 +258,30 @@ else:
 
 
 
-uploaded_file = st.file_uploader(
-    "Upload Question Image",
-    type=["png", "jpg", "jpeg"]
-)
+if st.button("Solve Question"):
 
-if uploaded_file is not None:
+    with st.spinner("Reading question from image..."):
+        extracted_text = pytesseract.image_to_string(image)
 
-    image = Image.open(uploaded_file)
-    image = image.resize((1000, 1000))
+    st.subheader("Extracted Text")
+    st.write(extracted_text)
 
-    st.image(image)
+    prompt = "Solve this question step by step. Give formula, steps, and final answer:\n" + extracted_text
 
-    if st.button("Solve Question"):
+    with st.spinner("Solving question..."):
+        try:
+            response = model.generate_content(
+                prompt,
+                generation_config={
+                    "max_output_tokens": 500
+                },
+                request_options={"timeout": 30}
+            )
 
-        prompt = "Solve this question shortly. Give formula, steps, and final answer."
+            st.subheader("Solution")
+            st.write(response.text)
 
-        with st.spinner("Solving question..."):
-            try:
-                response = model.generate_content(
-                    [prompt, image],
-                    request_options={"timeout": 30}
-                )
-
-                st.write(response.text)
-
-            except Exception as e:
-                st.error(f"Error: {e}")
+        except Exception as e:
+            st.error(f"Error: {e}")
 
   
