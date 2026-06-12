@@ -257,26 +257,15 @@ else:
 
 
 
-uploaded_file = st.file_uploader(
-    "Upload Question Image",
-    type=["png", "jpg", "jpeg"]
-)
+if st.button("Solve Question"):
 
-if uploaded_file is not None:
+    st.write("STEP 1")
 
-    image = Image.open(uploaded_file)
+    extracted_text = pytesseract.image_to_string(image)
 
-    st.image(image)
+    st.write("STEP 2")
 
-    if st.button("Solve Question"):
+    st.write(extracted_text)
 
-        prompt = """
-        Solve this question step by step.
-        Give explanation, formula and final answer.
-        """
-
-        response = model.generate_content(
-            [prompt, image]
-        )
-
+    st.write("STEP 3")
         st.write(response.text)
