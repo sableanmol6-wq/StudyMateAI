@@ -268,4 +268,4 @@ if st.button("Solve Question"):
     st.write(extracted_text)
 
     st.write("STEP 3")
-        st.write(response.text)
+        
