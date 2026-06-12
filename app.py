@@ -275,7 +275,7 @@ if uploaded_file is not None:
         Give explanation, formula and final answer.
         """
 
-        with st.spinner("Solving question..."):
+with st.spinner("Solving question..."):
     response = model.generate_content([prompt, image])
 
         st.write(response.text)
