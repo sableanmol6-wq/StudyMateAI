@@ -8,6 +8,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import google.generativeai as genai
 
+physics_count = 0
+math_count = 0
+english_count = 0
+mistakes = []
+
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel("gemini-3.1-flash-lite")
