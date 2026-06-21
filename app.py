@@ -15,7 +15,7 @@ english_count = 0
 mistakes = []
 
 load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 model = genai.GenerativeModel("gemini-3.1-flash-lite")
 
 st.title("StudyMate AI")
