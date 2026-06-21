@@ -1,3 +1,5 @@
+import fitz
+from PIL import Image
 import pytesseract
 from PIL import Image
 import os
@@ -259,8 +261,8 @@ else:
 
 
 uploaded_file = st.file_uploader(
-    "Upload Question Image",
-    type=["png", "jpg", "jpeg"]
+    "Upload Question Image or PDF",
+    type=["png", "jpg", "jpeg", "pdf"]
 )
 
 if uploaded_file is not None:
