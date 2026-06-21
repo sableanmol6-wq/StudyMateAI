@@ -267,6 +267,10 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is not None:
 
+    subject = st.selectbox(
+        "Select Subject",
+        ["Auto Detect", "Physics", "Math", "English"]
+    )
     image = Image.open(uploaded_file)
 
     st.image(image)
@@ -297,5 +301,4 @@ if uploaded_file is not None:
 
             except Exception as e:
                 st.error(f"Gemini Error: {e}")
-
-       
+     
