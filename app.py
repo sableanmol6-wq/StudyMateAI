@@ -258,15 +258,32 @@ else:
 
 
 
-if st.button("Solve Question"):
+uploaded_file = st.file_uploader(
+    "Upload Question Image",
+    type=["png", "jpg", "jpeg"]
+)
 
-    st.write("STEP 1")
+if uploaded_file is not None:
 
-    extracted_text = "OCR disabled"
+    image = Image.open(uploaded_file)
 
-    st.write("STEP 2")
+    st.image(image)
 
-    st.write(extracted_text)
+    if st.button("Solve Question"):
 
-    st.write("STEP 3")
+        with st.spinner("Solving question..."):
+
+            prompt = """
+            Solve this question step by step.
+            Explain clearly.
+            Show formulas used.
+            Give final answer.
+            """
+
+            response = model.generate_content(
+                [prompt, image]
+            )
+
+            st.subheader("Solution")
+            st.write(response.text)
         
