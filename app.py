@@ -261,8 +261,8 @@ else:
 
 
 uploaded_file = st.file_uploader(
-    "Upload Question Image or PDF",
-    type=["png", "jpg", "jpeg", "pdf"]
+    "Upload Question Image",
+    type=["png", "jpg", "jpeg"]
 )
 
 if uploaded_file is not None:
