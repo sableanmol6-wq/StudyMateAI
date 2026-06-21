@@ -262,7 +262,7 @@ if st.button("Solve Question"):
 
     st.write("STEP 1")
 
-    extracted_text = pytesseract.image_to_string(image)
+    extracted_text = "OCR disabled"
 
     st.write("STEP 2")
 
