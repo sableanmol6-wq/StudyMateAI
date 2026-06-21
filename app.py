@@ -279,7 +279,9 @@ if uploaded_file is not None:
 
         with st.spinner("Solving question..."):
 
-            prompt = """
+            prompt = f"""
+            Subject: {subject}
+
             Solve this question step by step.
             Explain clearly.
             Show formulas used.
