@@ -271,29 +271,29 @@ if uploaded_file is not None:
 
     if st.button("Solve Question"):
 
-    with st.spinner("Solving question..."):
+        with st.spinner("Solving question..."):
 
-        prompt = """
-        Solve this question step by step.
-        Explain clearly.
-        Show formulas used.
-        Give final answer.
-        """
+            prompt = """
+            Solve this question step by step.
+            Explain clearly.
+            Show formulas used.
+            Give final answer.
+            """
 
-        st.write("Before Gemini")
+            st.write("Before Gemini")
 
-        try:
+            try:
 
-            response = model.generate_content(
-                [prompt, image]
-            )
+                response = model.generate_content(
+                    [prompt, image]
+                )
 
-            st.write("After Gemini")
+                st.write("After Gemini")
 
-            st.subheader("Solution")
-            st.write(response.text)
+                st.subheader("Solution")
+                st.write(response.text)
 
-        except Exception as e:
-            st.error(f"Gemini Error: {e}")
+            except Exception as e:
+                st.error(f"Gemini Error: {e}")
 
        
