@@ -6,3 +6,5 @@ python-dotenv
 reportlab
 pillow
 pytesseract
+pymupdf
+pdf2image
