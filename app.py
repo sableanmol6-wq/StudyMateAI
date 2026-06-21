@@ -280,10 +280,17 @@ if uploaded_file is not None:
             Give final answer.
             """
 
-            response = model.generate_content(
-                [prompt, image]
-            )
+st.write("Before Gemini")
 
-            st.subheader("Solution")
-            st.write(response.text)
-        
+try:
+    response = model.generate_content(
+        [prompt, image]
+    )
+
+    st.write("After Gemini")
+
+    st.subheader("Solution")
+    st.write(response.text)
+
+except Exception as e:
+    st.error(f"Gemini Error: {e}")     
