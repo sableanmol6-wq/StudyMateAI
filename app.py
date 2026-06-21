@@ -206,7 +206,7 @@ if st.button("Generate MEXT Practice Questions"):
     """
 
     response = model.generate_content(prompt)
-
+st.subheader("📘 AI Solution")
     st.write(response.text)
 st.subheader("Test Result Tracker")
 
