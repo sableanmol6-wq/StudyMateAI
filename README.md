@@ -31,3 +31,5 @@ The project was designed to make learning more accessible and efficient by provi
 ## Author
 
 Anmol Sable
+
+Last updated: June 2026
