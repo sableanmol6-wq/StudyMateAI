@@ -1,6 +1,12 @@
 # StudyMate AI
 
 StudyMate AI is an AI-powered educational platform developed using Python, Streamlit, and Google's Gemini API. It helps students learn more effectively through personalized study tools, AI-generated explanations, quizzes, flashcards, progress tracking, and study planning.
+# StudyMate AI
+
+### Live Demo
+https://studymate-ai-anmol.streamlit.app/
+
+StudyMate AI is an AI-powered educational platform developed using Python, Streamlit, and Google's Gemini API.
 
 ## Features
 
