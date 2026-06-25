@@ -28,6 +28,20 @@ StudyMate AI is an AI-powered educational platform developed using Python, Strea
 
 The project was designed to make learning more accessible and efficient by providing students with AI-powered academic support, practice materials, progress monitoring, and personalized study resources.
 
+## Screenshots
+
+### AI Question Answering
+![AI Answerer](ai_answerer.png)
+
+### Flashcard Generator
+![Flashcards](flashcards.png)
+
+### MEXT/KOSEN Question Generator
+![MEXT Questions](mext_questions.png)
+
+### Image Question Solver
+![Image Solver](image_solver.png)
+
 ## Author
 
 Anmol Sable
